@@ -7,6 +7,8 @@ int main() {
 
 	Depatment;
 
+	cout << "Hello!";
+
 	return 0;
 
 }
