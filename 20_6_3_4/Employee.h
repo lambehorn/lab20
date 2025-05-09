@@ -26,10 +26,27 @@ private:
 
 		) { //конструктор связи
 
-			this->pNext = pNext;
-			this->depatmentName = depatmentName;
-			this->name = name;
-			this->isCheif = isCheif;
+			if (depatmentName == "" || name == "") {
+				cout << "err";
+			}
+			else {
+
+				if (isCheif) {
+
+					cout << "Начальник " << name << " добавлен" << endl;
+
+				}
+				else {
+
+					cout << "Сотрудник " << name << " добавлен" << endl;
+
+				}
+				this->pNext = pNext;
+				this->depatmentName = depatmentName;
+				this->name = name;
+				this->isCheif = isCheif;
+			}
+
 
 		}
 

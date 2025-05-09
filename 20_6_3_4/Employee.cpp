@@ -7,20 +7,8 @@ void EmployeeList::madeEmployee(string depatmentName, string name, bool ischeif)
 {// создание рабочего
 
 	if (head == nullptr) { // если рабочих не сществует создаём рабочего, который указывает на nullptr
-		if (ischeif) {
 
-			head = new EmployeeNode(depatmentName, name, ischeif);
-			cout << "Начальник " << name << " добавлен" << endl;
-
-
-		}
-		else {
-
-			head = new EmployeeNode(depatmentName, name);
-			cout << "Сотрудник " << name << " добавлен" << endl;
-
-		}
-
+		head = new EmployeeNode(depatmentName, name, ischeif);
 		
 	}
 	else {// если первый элемент инициализирован то создаем последний элемент
@@ -33,22 +21,8 @@ void EmployeeList::madeEmployee(string depatmentName, string name, bool ischeif)
 			current = current->pNext;
 		}
 
-		
+		current->pNext = new EmployeeNode(depatmentName, name, ischeif);
 
-		if (ischeif) {
-
-			cout << "Начальник " << name << " добавлен" << endl;
-			//head = new EmployeeNode(depatmentName, name);
-			current->pNext = new EmployeeNode(depatmentName, name, ischeif);
-
-		}
-		else {
-
-			cout << "Сотрудник " << name << " добавлен" << endl;
-			//head = new EmployeeNode(depatmentName, name);
-			current->pNext = new EmployeeNode(depatmentName, name);
-
-		}
 	}
 	size++;
 }
