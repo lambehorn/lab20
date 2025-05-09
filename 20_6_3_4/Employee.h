@@ -2,60 +2,103 @@
 
 using namespace std;
 
+class EmployeeList {
+private:
 
-	class Depatment {
+
+	
+
+	class EmployeeNode { // св€зь сотрудников
 	public:
 
-		Depatment* pNext;
-		string dName;
+		EmployeeNode* pNext;
+		string depatmentName;
+		string name;
+		bool isCheif;
+		
 
-		Depatment(Depatment* pNext = nullptr, string dName) : pNext(pNext), dName(dName) {};
+		EmployeeNode(
 
-		class Employee { //это класс емплоеров
-		public:
+		string depatmentName = nullptr,
+		string name = nullptr, 
+		bool isCheif = false, 
+		EmployeeNode* pNext = nullptr
 
-			string name;
-			bool isChief = false;
-			string department;
-			string chief;
+		) { //конструктор св€зи
 
-			class EmployeeNode {
+			if (depatmentName == "" || name == "") {
+				cout << "err";
+			}
+			else {
 
-				EmployeeNode* pNext;
-				EmployeeNode(EmployeeNode* pNext = nullptr) : pNext(pNext) {};
-			};
+				if (isCheif) {
 
-			Employee(string name, string department) { //тут конструкторы
+					cout << "Ќачальник " << name << " добавлен" << endl;
 
+				}
+				else {
+
+					cout << "—отрудник " << name << " добавлен" << endl;
+
+				}
+				this->pNext = pNext;
+				this->depatmentName = depatmentName;
 				this->name = name;
-				this->department = department;
-
+				this->isCheif = isCheif;
 			}
 
-			Employee(string name, string department, string chief) {
 
-				this->name = name;
-				this->department = department;
-				this->chief = chief;
-
-			}
-
-			Employee(string name, string department, bool isChief) {
-
-				this->name = name;
-				this->department = department;
-				this->isChief = isChief;
-
-			}
-
-			void setChief(string chief);
-
-			string getName();
-
-			void infoOut();
-		};
+		}
 
 	};
+
+	int size;
+	int scheifCount;
+	EmployeeNode* head;
+
+public:
+
+	EmployeeList() {// конструтор по умолчанию (нет рабочих)
+
+		size = 0;
+		head = nullptr;
+
+	}
+
+	int getSize() { 
+
+		return size;
+
+	}
+
+
+	EmployeeNode operator[](int index) {
+
+		int count = 0;
+		EmployeeNode* current = this->head;
+		
+		while (current != nullptr) {
+
+			if (count == index) {
+
+				return *current;
+
+			}
+
+			current = current->pNext;
+
+			count++;
+
+		}
+
+	}
+
+	void madeEmployee(string depatmentName, string name, bool ischeif = false);
+
+	void depatmentInfo(string depatmentName);
+
+};
+
 
 	
 	
